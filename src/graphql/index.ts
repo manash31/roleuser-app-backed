@@ -8,15 +8,24 @@ async function createApolloGraphQLServer () {
      const GQLServer = new ApolloServer({
         // Define Schema as String
         typeDefs: `
-        type UU{
-         firstName: String
-        }
+            type UU{
+               firstName: String
+            }
             type Query {
                getAllUser: [UU]
             }
+            type URole{
+               roleName: String
+            }
+            type Query {
+               getAllUser: [UU]
+               getAllRole: [URole]
+            }
+
             type Mutation {
                 ${User.mutations}
-                 }
+                ${Role.mutations}
+            }
         `, 
          // Actual function that will filter the data
          resolvers: {

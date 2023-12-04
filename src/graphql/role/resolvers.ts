@@ -2,9 +2,9 @@ import {prismaClient} from '../../lib/db'
 
 const queries = {
 
-   async getAllUser(){
-        const user = await prismaClient.user.findMany();
-        return user;
+   async getAllRole(){
+        const roles = await prismaClient.roles.findMany();
+        return roles;
     }
 
 }

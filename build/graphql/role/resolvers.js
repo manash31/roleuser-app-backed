@@ -12,10 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
 const db_1 = require("../../lib/db");
 const queries = {
-    getAllUser() {
+    getAllRole() {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield db_1.prismaClient.user.findMany();
-            return user;
+            const roles = yield db_1.prismaClient.roles.findMany();
+            return roles;
         });
     }
 };
