@@ -11,14 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("@apollo/server");
 const user_1 = require("./user");
+const role_1 = require("./role");
 function createApolloGraphQLServer() {
     return __awaiter(this, void 0, void 0, function* () {
         //Create GraphQL Server - GQLServer
         const GQLServer = new server_1.ApolloServer({
             // Define Schema as String
             typeDefs: `
+        type UU{
+         firstName: String
+        }
             type Query {
-             Hello: String
+               getAllUser: [UU]
             }
             type Mutation {
                 ${user_1.User.mutations}
@@ -26,8 +30,8 @@ function createApolloGraphQLServer() {
         `,
             // Actual function that will filter the data
             resolvers: {
-                Query: Object.assign({}, user_1.User.resolvers.queries),
-                Mutation: Object.assign({}, user_1.User.resolvers.mutations)
+                Query: Object.assign(Object.assign({}, user_1.User.resolvers.queries), role_1.Role.resolvers.queries),
+                Mutation: Object.assign(Object.assign({}, user_1.User.resolvers.mutations), role_1.Role.resolvers.mutations)
             },
         });
         //Start GQLServer Server

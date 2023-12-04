@@ -22,3 +22,21 @@ model User {
 
   @@map("users")
 }
+
+model Roles {
+  id String @id @default(uuid())
+  roleName String @map("role_name")
+  roleId String @map("role_id")
+
+
+  @@map("roles")
+}
+
+
+model Session {
+  id String @id @default(uuid())
+  sessionName String @map("session_name")
+  sessionId String @map("session_id")
+
+  @@map("session")
+}

@@ -20,14 +20,11 @@ const queries = {
     }
 };
 const mutations = {
-    createUser: (_, { firstName, lastName, email, password }) => __awaiter(void 0, void 0, void 0, function* () {
-        yield db_1.prismaClient.user.create({
+    createRole: (_, { roleName, roleId }) => __awaiter(void 0, void 0, void 0, function* () {
+        yield db_1.prismaClient.roles.create({
             data: {
-                email,
-                firstName,
-                lastName,
-                password,
-                salt: 'randon_salt'
+                roleName,
+                roleId
             },
         });
         return true;
