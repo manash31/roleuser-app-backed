@@ -17,7 +17,31 @@ const queries = {
             const user = yield db_1.prismaClient.user.findMany();
             return user;
         });
-    }
+    },
+    /*
+     async getUserByID(email: string){
+         console.log("id :"+email)
+        // id=`143b0183-cc62-40b6-b205-97578ca8e735`;
+         console.log("id :"+email)
+         const user = await prismaClient.user.findUnique({
+             where: {email}
+         });
+         return user;
+     }
+     */
+    getUserByID: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(id);
+        const uu = yield db_1.prismaClient.user.findUnique({
+            where: { id }
+        });
+        return uu;
+    }),
+    deleteUserByID: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(id);
+        return yield db_1.prismaClient.user.delete({
+            where: { id }
+        });
+    })
 };
 const mutations = {
     createUser: (_, { firstName, lastName, email, password }) => __awaiter(void 0, void 0, void 0, function* () {

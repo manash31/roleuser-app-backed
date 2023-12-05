@@ -12,22 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
 const db_1 = require("../../lib/db");
 const queries = {
-    getAllUser() {
+    getAllRole() {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield db_1.prismaClient.user.findMany();
-            return user;
+            const roles = yield db_1.prismaClient.roles.findMany();
+            return roles;
         });
     }
 };
 const mutations = {
-    createUser: (_, { firstName, lastName, email, password }) => __awaiter(void 0, void 0, void 0, function* () {
-        yield db_1.prismaClient.user.create({
+    createSession: (_, { sessionName, sessionId }) => __awaiter(void 0, void 0, void 0, function* () {
+        yield db_1.prismaClient.session.create({
             data: {
-                email,
-                firstName,
-                lastName,
-                password,
-                salt: 'randon_salt'
+                sessionName,
+                sessionId
             },
         });
         return true;

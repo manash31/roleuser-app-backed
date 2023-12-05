@@ -1,10 +1,7 @@
 export const typeDefs = `#graphql
-   type UU {
-    id: ID,
-    firstName: string,
-    lastName: String,
-    email: String
-   }
+   type URole{
+               roleName: String
+            }
 `;
 
 export default typeDefs;
